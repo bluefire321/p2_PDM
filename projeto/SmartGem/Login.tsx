@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 
 const EMAIL_VALIDO = 'teste@smartgem.com';
 const SENHA_VALIDA = 'Smart123';
@@ -18,7 +12,11 @@ const CORES = {
   texto: '#D9E1F1',
 };
 
-export default function Login() {
+type LoginProps = {
+  onLoginSuccess: () => void;
+};
+
+export default function Login({ onLoginSuccess }: LoginProps) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -34,9 +32,11 @@ export default function Login() {
     } else {
       if (email.trim().toLowerCase() === '') {
         setMensagem('Por favor, insira um e-mail.');
+        setSucesso(false);
       }
       if (senha === '') {
         setMensagem('Por favor, insira uma senha.');
+        setSucesso(false);
       }
     }
     if (email.trim().toLowerCase() !== '' && senha !== '') {
@@ -46,7 +46,8 @@ export default function Login() {
       ) {
         setMensagem('Login realizado com sucesso!');
         setSucesso(true);
-        //levar pra tela ListaP
+        
+        onLoginSuccess();
       }
       if (
         email.trim().toLowerCase() !== EMAIL_VALIDO &&
