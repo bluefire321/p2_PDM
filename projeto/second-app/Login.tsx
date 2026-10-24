@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const EMAIL_VALIDO = 'teste@smarttech.com';
+const EMAIL_VALIDO = 'teste@smartgem.com';
 const SENHA_VALIDA = 'Smart123';
 
 const CORES = {
@@ -27,40 +27,55 @@ export default function Login() {
 
   function entrar() {
     if (
-      email.trim().toLowerCase() === '' &&
-      senha === ''
+      email.trim().toLowerCase() === '' && senha === ''
     ) {
-      setMensagem('Por favor, insira um e-mail e/ou uma senha.');
+      setMensagem('Por favor, insira um e-mail e uma senha.');
       setSucesso(false);
+    } else {
+      if (email.trim().toLowerCase() === '') {
+        setMensagem('Por favor, insira um e-mail.');
+      }
+      if (senha === '') {
+        setMensagem('Por favor, insira uma senha.');
+      }
     }
-     if (
-      email.trim().toLowerCase() !== EMAIL_VALIDO && senha === SENHA_VALIDA
-    ) {
-      setMensagem('Email incorreto.');
-      setSucesso(false);
+    if (email.trim().toLowerCase() !== '' && senha !== '') {
+      if (
+        email.trim().toLowerCase() === EMAIL_VALIDO &&
+        senha === SENHA_VALIDA
+      ) {
+        setMensagem('Login realizado com sucesso!');
+        setSucesso(true);
+        //levar pra tela ListaP
+      }
+      if (
+        email.trim().toLowerCase() !== EMAIL_VALIDO &&
+        senha !== SENHA_VALIDA
+      ) {
+        setMensagem('Email e senha incorretos.');
+        setSucesso(false);
+      }
+      if (
+        email.trim().toLowerCase() !== EMAIL_VALIDO && senha === SENHA_VALIDA
+      ) {
+        setMensagem('Email incorreto.');
+        setSucesso(false);
+      }
+      if (
+        email.trim().toLowerCase() === EMAIL_VALIDO && senha !== SENHA_VALIDA
+      ) {
+        setMensagem('Senha incorreta.');
+        setSucesso(false);
+      }
     }
-     if (
-      email.trim().toLowerCase() === EMAIL_VALIDO && senha !== SENHA_VALIDA
-    ) {
-      setMensagem('Senha incorreta.');
-      setSucesso(false);
-    }
-    if (
-      email.trim().toLowerCase() === EMAIL_VALIDO &&
-      senha === SENHA_VALIDA
-    ) {
-      setMensagem('Login realizado com sucesso!');
-      setSucesso(true);
-      //levar pra tela ListaP
   }
-}
 
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>SmartTech</Text>
+      <Text style={styles.logo}>SmartGem</Text>
 
       <Text style={styles.subtitulo}>
-        TECNOLOGIA PARA O SEU DIA A DIA
+        JOIAS E ACESSÓRIOS INTELIGENTES PARA O SEU DIA A DIA
       </Text>
 
       <Text style={styles.titulo}>Bem-vindo!</Text>
