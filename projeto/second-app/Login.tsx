@@ -27,16 +27,33 @@ export default function Login() {
 
   function entrar() {
     if (
+      email.trim().toLowerCase() === '' &&
+      senha === ''
+    ) {
+      setMensagem('Por favor, insira um e-mail e/ou uma senha.');
+      setSucesso(false);
+    }
+     if (
+      email.trim().toLowerCase() !== EMAIL_VALIDO && senha === SENHA_VALIDA
+    ) {
+      setMensagem('Email incorreto.');
+      setSucesso(false);
+    }
+     if (
+      email.trim().toLowerCase() === EMAIL_VALIDO && senha !== SENHA_VALIDA
+    ) {
+      setMensagem('Senha incorreta.');
+      setSucesso(false);
+    }
+    if (
       email.trim().toLowerCase() === EMAIL_VALIDO &&
       senha === SENHA_VALIDA
     ) {
       setMensagem('Login realizado com sucesso!');
       setSucesso(true);
-    } else {
-      setMensagem('E-mail ou senha incorretos.');
-      setSucesso(false);
-    }
+      //levar pra tela ListaP
   }
+}
 
   return (
     <View style={styles.container}>
