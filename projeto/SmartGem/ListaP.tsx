@@ -1,3 +1,4 @@
+//Lembrem de adicionar as iniciais de cada integrante (IQV) em todas as variáveis, funções e estados 
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function ListaP() {

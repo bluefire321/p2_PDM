@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 
-const EMAIL_VALIDO = 'teste@smartgem.com';
-const SENHA_VALIDA = 'Smart123';
+const EMAIL_VALIDOIQV = 'teste@smartgem.com';
+const SENHA_VALIDAIQV = 'Smart123';
 
-const CORES = {
+const CORESIQV = {
   fundo: '#192338',
   campo: '#1E2E4F',
   botao: '#31487A',
@@ -16,150 +16,150 @@ type LoginProps = {
   onLoginSuccess: () => void;
 };
 
-export default function Login({ onLoginSuccess }: LoginProps) {
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [mostrarSenha, setMostrarSenha] = useState(false);
-  const [mensagem, setMensagem] = useState('');
-  const [sucesso, setSucesso] = useState(false);
+export default function LoginIQV({ onLoginSuccess: onLoginSuccessIQV }: LoginProps) {
+  const [emailIQV, setEmailIQV] = useState('');
+  const [senhaIQV, setSenhaIQV] = useState('');
+  const [mostrarSenhaIQV, setMostrarSenhaIQV] = useState(false);
+  const [mensagemIQV, setMensagemIQV] = useState('');
+  const [sucessoIQV, setSucessoIQV] = useState(false);
 
-  function entrar() {
+  function entrarIQV() {
     if (
-      email.trim().toLowerCase() === '' && senha === ''
+      emailIQV.trim().toLowerCase() === '' && senhaIQV === ''
     ) {
-      setMensagem('Por favor, insira um e-mail e uma senha.');
-      setSucesso(false);
+      setMensagemIQV('Por favor, insira um e-mail e uma senha.');
+      setSucessoIQV(false);
     } else {
-      if (email.trim().toLowerCase() === '') {
-        setMensagem('Por favor, insira um e-mail.');
-        setSucesso(false);
+      if (emailIQV.trim().toLowerCase() === '') {
+        setMensagemIQV('Por favor, insira um e-mail.');
+        setSucessoIQV(false);
       }
-      if (senha === '') {
-        setMensagem('Por favor, insira uma senha.');
-        setSucesso(false);
+      if (senhaIQV === '') {
+        setMensagemIQV('Por favor, insira uma senha.');
+        setSucessoIQV(false);
       }
     }
-    if (email.trim().toLowerCase() !== '' && senha !== '') {
+    if (emailIQV.trim().toLowerCase() !== '' && senhaIQV !== '') {
       if (
-        email.trim().toLowerCase() === EMAIL_VALIDO &&
-        senha === SENHA_VALIDA
+        emailIQV.trim().toLowerCase() === EMAIL_VALIDOIQV &&
+        senhaIQV === SENHA_VALIDAIQV
       ) {
-        setMensagem('Login realizado com sucesso!');
-        setSucesso(true);
-        
-        onLoginSuccess();
+        setMensagemIQV('Login realizado com sucesso!');
+        setSucessoIQV(true);
+
+        onLoginSuccessIQV();
       }
       if (
-        email.trim().toLowerCase() !== EMAIL_VALIDO &&
-        senha !== SENHA_VALIDA
+        emailIQV.trim().toLowerCase() !== EMAIL_VALIDOIQV &&
+        senhaIQV !== SENHA_VALIDAIQV
       ) {
-        setMensagem('Email e senha incorretos.');
-        setSucesso(false);
+        setMensagemIQV('Email e senha incorretos.');
+        setSucessoIQV(false);
       }
       if (
-        email.trim().toLowerCase() !== EMAIL_VALIDO && senha === SENHA_VALIDA
+        emailIQV.trim().toLowerCase() !== EMAIL_VALIDOIQV && senhaIQV === SENHA_VALIDAIQV
       ) {
-        setMensagem('Email incorreto.');
-        setSucesso(false);
+        setMensagemIQV('Email incorreto.');
+        setSucessoIQV(false);
       }
       if (
-        email.trim().toLowerCase() === EMAIL_VALIDO && senha !== SENHA_VALIDA
+        emailIQV.trim().toLowerCase() === EMAIL_VALIDOIQV && senhaIQV !== SENHA_VALIDAIQV
       ) {
-        setMensagem('Senha incorreta.');
-        setSucesso(false);
+        setMensagemIQV('Senha incorreta.');
+        setSucessoIQV(false);
       }
     }
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.logo}>SmartGem</Text>
+    <View style={stylesIQV.container}>
+      <Text style={stylesIQV.logo}>SmartGem</Text>
 
-      <Text style={styles.subtitulo}>
+      <Text style={stylesIQV.subtitulo}>
         JOIAS E ACESSÓRIOS INTELIGENTES PARA O SEU DIA A DIA
       </Text>
 
-      <Text style={styles.titulo}>Bem-vindo!</Text>
+      <Text style={stylesIQV.titulo}>Bem-vindo!</Text>
 
-      <Text style={styles.descricao}>
+      <Text style={stylesIQV.descricao}>
         Entre na sua conta para continuar.
       </Text>
 
-      <Text style={styles.label}>E-mail</Text>
+      <Text style={stylesIQV.label}>E-mail</Text>
 
       <TextInput
-        style={styles.input}
+        style={stylesIQV.input}
         placeholder="Digite seu e-mail"
-        placeholderTextColor={CORES.destaque}
-        value={email}
-        onChangeText={(texto) => {
-          setEmail(texto);
-          setMensagem('');
+        placeholderTextColor={CORESIQV.destaque}
+        value={emailIQV}
+        onChangeText={(textoIQV) => {
+          setEmailIQV(textoIQV);
+          setMensagemIQV('');
         }}
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
       />
 
-      <Text style={styles.label}>Senha</Text>
+      <Text style={stylesIQV.label}>Senha</Text>
 
-      <View style={styles.campoSenha}>
+      <View style={stylesIQV.campoSenha}>
         <TextInput
-          style={styles.inputSenha}
+          style={stylesIQV.inputSenha}
           placeholder="Digite sua senha"
-          placeholderTextColor={CORES.destaque}
-          value={senha}
-          onChangeText={(texto) => {
-            setSenha(texto);
-            setMensagem('');
+          placeholderTextColor={CORESIQV.destaque}
+          value={senhaIQV}
+          onChangeText={(textoIQV) => {
+            setSenhaIQV(textoIQV);
+            setMensagemIQV('');
           }}
-          secureTextEntry={!mostrarSenha}
+          secureTextEntry={!mostrarSenhaIQV}
           autoCapitalize="none"
-          onSubmitEditing={entrar}
+          onSubmitEditing={entrarIQV}
           returnKeyType="done"
         />
 
         <Pressable
-          onPress={() => setMostrarSenha(!mostrarSenha)}
+          onPress={() => setMostrarSenhaIQV(!mostrarSenhaIQV)}
         >
-          <Text style={styles.mostrarSenha}>
-            {mostrarSenha ? 'Ocultar' : 'Mostrar'}
+          <Text style={stylesIQV.mostrarSenha}>
+            {mostrarSenhaIQV ? 'Ocultar' : 'Mostrar'}
           </Text>
         </Pressable>
       </View>
 
       <Pressable
-        style={({ pressed }) => [
-          styles.botao,
-          pressed && styles.botaoPressionado,
+        style={({ pressed: pressedIQV }) => [
+          stylesIQV.botao,
+          pressedIQV && stylesIQV.botaoPressionado,
         ]}
-        onPress={entrar}
+        onPress={entrarIQV}
       >
-        <Text style={styles.textoBotao}>Entrar</Text>
+        <Text style={stylesIQV.textoBotao}>Entrar</Text>
       </Pressable>
 
-      {mensagem !== '' && (
+      {mensagemIQV !== '' && (
         <Text
           style={[
-            styles.mensagem,
+            stylesIQV.mensagem,
             {
-              color: sucesso ? '#8FD9B6' : '#FF9C9C',
+              color: sucessoIQV ? '#8FD9B6' : '#FF9C9C',
             },
           ]}
         >
-          {mensagem}
+          {mensagemIQV}
         </Text>
       )}
 
       <Pressable
         onPress={() => {
-          setMensagem('Cadastro ainda não implementado.');
-          setSucesso(false);
+          setMensagemIQV('Cadastro ainda não implementado.');
+          setSucessoIQV(false);
         }}
       >
-        <Text style={styles.cadastro}>
+        <Text style={stylesIQV.cadastro}>
           Não tem uma conta?{' '}
-          <Text style={styles.cadastroDestaque}>
+          <Text style={stylesIQV.cadastroDestaque}>
             Cadastre-se
           </Text>
         </Text>
@@ -168,23 +168,23 @@ export default function Login({ onLoginSuccess }: LoginProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const stylesIQV = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: CORES.fundo,
+    backgroundColor: CORESIQV.fundo,
     justifyContent: 'center',
     paddingHorizontal: 28,
   },
 
   logo: {
-    color: CORES.destaque,
+    color: CORESIQV.destaque,
     fontSize: 36,
     fontWeight: 'bold',
     textAlign: 'center',
   },
 
   subtitulo: {
-    color: CORES.texto,
+    color: CORESIQV.texto,
     fontSize: 10,
     letterSpacing: 2,
     textAlign: 'center',
@@ -193,61 +193,61 @@ const styles = StyleSheet.create({
   },
 
   titulo: {
-    color: CORES.texto,
+    color: CORESIQV.texto,
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 8,
   },
 
   descricao: {
-    color: CORES.destaque,
+    color: CORESIQV.destaque,
     fontSize: 14,
     marginBottom: 30,
   },
 
   label: {
-    color: CORES.texto,
+    color: CORESIQV.texto,
     fontSize: 14,
     fontWeight: '600',
     marginBottom: 8,
   },
 
   input: {
-    backgroundColor: CORES.campo,
-    color: CORES.texto,
+    backgroundColor: CORESIQV.campo,
+    color: CORESIQV.texto,
     padding: 15,
     borderRadius: 10,
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: CORES.botao,
+    borderColor: CORESIQV.botao,
   },
 
   campoSenha: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: CORES.campo,
+    backgroundColor: CORESIQV.campo,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: CORES.botao,
+    borderColor: CORESIQV.botao,
     paddingHorizontal: 15,
     marginBottom: 25,
   },
 
   inputSenha: {
     flex: 1,
-    color: CORES.texto,
+    color: CORESIQV.texto,
     paddingVertical: 15,
   },
 
   mostrarSenha: {
-    color: CORES.destaque,
+    color: CORESIQV.destaque,
     fontSize: 12,
     fontWeight: '600',
     marginLeft: 8,
   },
 
   botao: {
-    backgroundColor: CORES.botao,
+    backgroundColor: CORESIQV.botao,
     padding: 16,
     borderRadius: 10,
     alignItems: 'center',
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
   },
 
   textoBotao: {
-    color: CORES.texto,
+    color: CORESIQV.texto,
     fontSize: 16,
     fontWeight: 'bold',
   },
@@ -271,14 +271,14 @@ const styles = StyleSheet.create({
   },
 
   cadastro: {
-    color: CORES.texto,
+    color: CORESIQV.texto,
     textAlign: 'center',
     marginTop: 25,
     fontSize: 13,
   },
 
   cadastroDestaque: {
-    color: CORES.destaque,
+    color: CORESIQV.destaque,
     fontWeight: 'bold',
   },
 });
