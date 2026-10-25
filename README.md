@@ -10,4 +10,4 @@ Integrantes:
 - Victor Hugo Marques De Souza
 
 Descrição:
-Desenvolvimento de um aplicativo de loja de joias tecnológicas e acessórios inteligentes com tela de login, tela da lista de produtos e tela de detalhes do produto.
+Desenvolvimento de um aplicativo mobile de loja virtual de joias tecnológicas e acessórios inteligentes com tela de login, tela da lista de produtos e tela de detalhes do produto.
