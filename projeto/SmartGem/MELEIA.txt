@@ -1,0 +1,23 @@
+Cara, contar um bglh pra vcs. Quando forem baixar qualquer versão de um projeto que tem DEPENDÊNCIAS (package.json, node modules, package-lock.json e outros) a PRIMEIRA coisa que você vai fazer é usar o comando
+
+npm install
+
+ele vai garantir que você tem as depencias corretas instaladas na pasta do seu projeto. Por algum motivo, esse projeto tava com arquivos SDK 54, SDK 57 e SDK 58, que são versões diferentes do expo, por isso tava tudo fudido. Eu troquei tudo pra SDK 54, pq era o mais fácil e que menos demorava (e além disso, é o que o Gabriel usa nos vídeos de Expo-Router tlgd).
+
+Se o NPM INSTALL não foi suficiente, ou se deu erro, segue esses comandos no Terminal Integrado da SmartGem:
+
+Remove-Item -Recurse -Force node_modules, .expo
+npm cache clean --force
+
+
+Depois:
+
+npm install --legacy-peer-deps
+
+Ultimo passo:
+
+npx expo start -c
+
+Isso vai limpar os arquivos antigos de package.json e package-lock.json e colocar os da versão SDK 54 na pasta do projeto. O ultimo passo só limpa o cache pra iniciar normal na web.
+
+
