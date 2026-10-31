@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import LoginIQV from './Login';
 
 export default function index(){
   return (

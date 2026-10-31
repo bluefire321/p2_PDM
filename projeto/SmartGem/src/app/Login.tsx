@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 
@@ -12,11 +13,7 @@ const CORESIQV = {
   texto: '#D9E1F1',
 };
 
-type LoginProps = {
-  onLoginSuccess: () => void;
-};
-
-export default function LoginIQV({ onLoginSuccess: onLoginSuccessIQV }: LoginProps) {
+export default function LoginIQV() {
   const [emailIQV, setEmailIQV] = useState('');
   const [senhaIQV, setSenhaIQV] = useState('');
   const [mostrarSenhaIQV, setMostrarSenhaIQV] = useState(false);
@@ -47,7 +44,7 @@ export default function LoginIQV({ onLoginSuccess: onLoginSuccessIQV }: LoginPro
         setMensagemIQV('Login realizado com sucesso!');
         setSucessoIQV(true);
 
-        onLoginSuccessIQV();
+        router.replace('/ListaP');
       }
       if (
         emailIQV.trim().toLowerCase() !== EMAIL_VALIDOIQV &&
