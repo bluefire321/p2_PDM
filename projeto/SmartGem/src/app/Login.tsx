@@ -77,7 +77,7 @@ export default function LoginIQV() {
       <Text style={stylesIQV.logo}>SmartGem</Text>
 
       <Text style={stylesIQV.subtitulo}>
-        BRUUUUH
+        *****POR FAVOR, FUNCIONA*****
       </Text>
 
       <Text style={stylesIQV.titulo}>Bem-vindo!</Text>
