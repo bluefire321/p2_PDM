@@ -19,7 +19,17 @@ export default function ListaP() {
       >
         <Text style={styles.botaoTexto}>Ir para Detalhes do Produto</Text>
       </TouchableOpacity>
-    </View> //Tento mostrar como navegar para a tela de detalhes do produto, passando o primeiro produto da lista como parâmetro. Entretanto, o parâmetro não está sendo passado corretamente, e a tela de detalhes não está recebendo o produto. Preciso de ajuda para corrigir isso.
+
+      <TouchableOpacity
+        style={styles.botao}
+        onPress={() => router.push({
+          pathname: '/Detalhes',
+          params: { id: String(produtos[1].id) }, // Vou tentar passar o id do segundo produto e depois usar useLocalSearchParams para pegar o produto correto na tela de detalhes.
+        })}
+      >
+        <Text style={styles.botaoTexto}>Ir para Detalhes do Produto 02</Text>
+      </TouchableOpacity>
+    </View>//SUCESSO!
   );
 }
 
