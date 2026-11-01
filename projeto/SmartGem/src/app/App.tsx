@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Login from './Login';
 import ListaP from './ListaP';
+import Login from './Login';
 
 export default function App() {
   const [logado, setLogado] = useState(false);

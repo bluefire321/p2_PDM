@@ -1,12 +1,25 @@
 //Lembrem de adicionar as iniciais de cada integrante (IQV) em todas as variáveis, funções e estados 
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { useRouter } from 'expo-router';
+import Detalhes from './Detalhes';
+import { produtos } from '../Data/DataDetalhes';
 
 export default function ListaP() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Bem-vindo à SmartGem!</Text>
       <Text>Esta é a página principal do aplicativo.</Text>
-    </View>
+      <TouchableOpacity
+        style={styles.botao}
+        onPress={() => router.push({
+          pathname: '/Detalhes',
+          params: { id: String(produtos[0].id) }, // Vou tentar passar o id e depois usar useLocalSearchParams para pegar o produto correto na tela de detalhes.
+        })}
+      >
+        <Text style={styles.botaoTexto}>Ir para Detalhes do Produto</Text>
+      </TouchableOpacity>
+    </View> //Tento mostrar como navegar para a tela de detalhes do produto, passando o primeiro produto da lista como parâmetro. Entretanto, o parâmetro não está sendo passado corretamente, e a tela de detalhes não está recebendo o produto. Preciso de ajuda para corrigir isso.
   );
 }
 
@@ -17,6 +30,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+  },
+
+  botao: {
+    backgroundColor: '#8FB3E2',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginTop: 20,
+  },
+
+  botaoTexto: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 
   titulo: {
