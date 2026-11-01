@@ -72,12 +72,12 @@ export default function LoginIQV() {
     <ImageBackground
       source={require('../../assets/download.jpg')}
       resizeMode="cover"
-      style={[stylesIQV.container, { borderWidth: 5, borderColor: 'red' }]}
+      style={[stylesIQV.container]}
     >
       <Text style={stylesIQV.logo}>SmartGem</Text>
 
       <Text style={stylesIQV.subtitulo}>
-        *****POR FAVOR, FUNCIONA*****
+        JOIAS INTELIGENTES E ACESSÓRIOS TECNOLÓGICOS PARA O SEU DIA A DIA
       </Text>
 
       <Text style={stylesIQV.titulo}>Bem-vindo!</Text>
