@@ -1,0 +1,58 @@
+export const produtosQIV = [
+  {
+    id: '1',
+    nome: 'Anel inteligente SR6',
+    categoria: 'Anéis',
+    preco: 'R$ 239,90',
+    imagem: 'https://beafon.com/wp-content/uploads/2024/09/Produktbilder_SmartRing_2.png',
+  },
+  {
+    id: '2',
+    nome: 'Anel Colmi R12',
+    categoria: 'Anéis',
+    preco: 'R$ 129,90',
+    imagem: 'https://lojabrmetaverso.com.br/cdn/shop/files/AnelInteligenteR12SmartColmi2025_0d7e8278-0a4c-4722-a3fd-37625d3f21b9_800x.png?v=1748020651',
+  },
+  {
+    id: '3',
+    nome: 'Relógio Honeywell',
+    categoria: 'Relógios',
+    preco: 'R$ 399,90',
+    imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6ZgmsrZHbVhehbEsth2H53A_rOznsrlRm84hS4MJZdJUnJhOn7_Ol9z9Q&s=10',
+  },
+  {
+    id: '4',
+    nome: 'Relógio Galaxy 7 8 Ult',
+    categoria: 'Relógios',
+    preco: 'R$ 349,90',
+    imagem: 'https://http2.mlstatic.com/D_NQ_NP_2X_623134-CBT111442169800_052026-F-kit-de-modificacao-de-luxo-para-samsung-galaxy-watch-7-8-ult.webp',
+  },
+  {
+    id: '5',
+    nome: 'Colar Xiaomi Band 8',
+    categoria: 'Colares',
+    preco: 'R$ 149,90',
+    imagem: 'https://www.techpunt.nl/cdn/shop/files/xiaomi-smart-band-8-pendant-4.jpg?v=1776341764&width=800',
+  },
+  {
+    id: '6',
+    nome: 'Colar Shakti Safety',
+    categoria: 'Colares',
+    preco: 'R$ 179,90',
+    imagem: 'https://resqjewelry.com/cdn/shop/files/Shakti_Safety_Necklace_for_woman_Silver_ResQ_Smart_Jewelry.jpg?crop=center&height=1080&v=1764153522&width=1080',
+  },
+  {
+    id: '7',
+    nome: 'Pulseira Haptix Flow',
+    categoria: 'Pulseiras',
+    preco: 'R$ 199,90',
+    imagem: 'https://haptixlabs.com/cdn/shop/files/Black_Strap.jpg?v=1788185271&width=713',
+  },
+  {
+    id: '8',
+    nome: 'Pulseira Mormaii',
+    categoria: 'Pulseiras',
+    preco: 'R$ 169,90',
+    imagem: 'https://www.mormaiishop.com.br/upload/produto/imagem/b_pulseira-inteligente-mormaii-preto-preto-355.webp',
+  },
+];
