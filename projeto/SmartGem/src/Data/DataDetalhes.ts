@@ -12,81 +12,107 @@ export type Produto = {
 
 export const produtos: Produto[] = [
   {
-    id: "coffee-01",
-    nome: "Espresso Coffee",
-    subtitulo: "with Chocolate",
+    id: "1",
+    nome: "Anel inteligente SR6",
+    subtitulo: "Anel inteligente para monitoramento de saúde.",
     descricao:
-      "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85 ml of fresh milk. A smooth coffee with a creamy texture.",
+      "Um anel desenvolvido para monitorar sua saúde e bem-estar, oferecendo recursos como monitoramento de frequência cardíaca, rastreamento de sono e notificações inteligentes.",
     avaliacao: 4.5,
     quantidadeDeReviews: "2,330",
-    preco: 4.53,
+    preco: 239.90,
     imagem:
-      "https://images.unsplash.com/photo-1534778101976-628	q16b3b8a?auto=format&fit=crop&w=1000&q=85".replace("\t", ""),
+      "https://beafon.com/wp-content/uploads/2024/09/Produktbilder_SmartRing_2.png".replace("\t", ""),
     tamanhos: ["S", "M", "L"],
   },
   {
-    id: "coffee-02",
-    nome: "Caramel Macchiato",
-    subtitulo: "with Caramel",
+    id: "2",
+    nome: "Anel Colmi R12",
+    subtitulo: "Anel de alta tecnologia com design elegante.",
     descricao:
-      "A rich espresso combined with steamed milk and a delicate caramel finish. A balanced drink for anyone who enjoys a sweeter coffee.",
+      "Um anel de alta tecnologia com design elegante, projetado para oferecer conforto e estilo em qualquer ocasião.",
     avaliacao: 4.8,
     quantidadeDeReviews: "1,845",
-    preco: 5.25,
+    preco: 129.90,
     imagem:
-      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=1000&q=85",
+      "https://lojabrmetaverso.com.br/cdn/shop/files/AnelInteligenteR12SmartColmi2025_0d7e8278-0a4c-4722-a3fd-37625d3f21b9_800x.png?v=1748020651".replace("\t", ""),
     tamanhos: ["S", "M", "L"],
   },
   {
-    id: "coffee-03",
-    nome: "Cappuccino",
-    subtitulo: "with Milk Foam",
+    id: "3",
+    nome: "Relógio Honeywell",
+    subtitulo: "Relógio inteligente para melhor organização do seu dia.",
     descricao:
-      "A classic combination of espresso, steamed milk and a generous layer of silky milk foam.",
+      "Um relógio inteligente projetado para ajudá-lo a organizar melhor o seu dia, oferecendo recursos como notificações, monitoramento de atividades e muito mais.",
     avaliacao: 4.7,
     quantidadeDeReviews: "1,620",
-    preco: 4.80,
+    preco: 399.90,
     imagem:
-      "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=1000&q=85",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6ZgmsrZHbVhehbEsth2H53A_rOznsrlRm84hS4MJZdJUnJhOn7_Ol9z9Q&s=10".replace("\t", ""),
     tamanhos: ["S", "M", "L"],
   },
   {
-    id: "coffee-04",
-    nome: "Iced Latte",
-    subtitulo: "with Fresh Milk",
+    id: "4",
+    nome: "Relógio Galaxy 7 8 Ult",
+    subtitulo: "Relógio inteligente com tela AMOLED.",
     descricao:
-      "A refreshing espresso drink served cold with milk and ice. Smooth, light and easy to enjoy.",
+      "Um relógio inteligente com tela AMOLED, projetado para oferecer uma experiência visual impressionante e funcionalidades avançadas.",
     avaliacao: 4.6,
     quantidadeDeReviews: "980",
-    preco: 4.95,
+    preco: 349.90,
     imagem:
-      "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1000&q=85",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_623134-CBT111442169800_052026-F-kit-de-modificacao-de-luxo-para-samsung-galaxy-watch-7-8-ult.webp".replace("\t", ""),
     tamanhos: ["S", "M", "L"],
   },
   {
-    id: "coffee-05",
-    nome: "Mocha",
-    subtitulo: "with Chocolate",
+    id: "5",
+    nome: "Colar Xiaomi Band 8",
+    subtitulo: "Colar inteligente com detecção de movimento.",
     descricao:
-      "Espresso, steamed milk and chocolate come together in a creamy drink with a rich cocoa flavor.",
+      "Este colar inteligente é equipado com sensores de detecção de movimento, permitindo monitorar suas atividades físicas e receber notificações diretamente no seu pescoço.",
     avaliacao: 4.9,
     quantidadeDeReviews: "2,010",
-    preco: 5.60,
+    preco: 149.90,
     imagem:
-      "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1000&q=85",
+      "https://www.techpunt.nl/cdn/shop/files/xiaomi-smart-band-8-pendant-4.jpg?v=1776341764&width=800".replace("\t", ""),
     tamanhos: ["S", "M", "L"],
   },
   {
-    id: "coffee-06",
-    nome: "Flat White",
-    subtitulo: "with Microfoam",
+    id: "6",
+    nome: "Colar Shakti Safety",
+    subtitulo: "Colar inteligente com recursos de segurança pessoal.",
     descricao:
-      "A double espresso topped with velvety steamed milk. Strong coffee flavor with a smooth finish.",
+      "Este colar inteligente oferece recursos de segurança pessoal, como alertas de emergência e monitoramento de localização.",
     avaliacao: 4.7,
     quantidadeDeReviews: "1,275",
-    preco: 5.10,
+    preco: 199.90,
     imagem:
-      "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1000&q=85",
+      "https://resqjewelry.com/cdn/shop/files/Shakti_Safety_Necklace_for_woman_Silver_ResQ_Smart_Jewelry.jpg?crop=center&height=1080&v=1764153522&width=1080".replace("\t", ""),
+    tamanhos: ["S", "M", "L"],
+  },
+  {
+  id: "7",
+    nome: "Pulseira Haptix Flow",
+    subtitulo: "Pulseira inteligente com feedback tátil.",
+    descricao:
+      "Uma pulseira inteligente que oferece feedback tátil para notificações e alertas, permitindo que você fique conectado sem precisar olhar para o seu dispositivo.",
+    avaliacao: 4.7,
+    quantidadeDeReviews: "1,275",
+    preco: 199.90,
+    imagem:
+      "https://haptixlabs.com/cdn/shop/files/Black_Strap.jpg?v=1788185271&width=713".replace("\t", ""),
+    tamanhos: ["S", "M", "L"],
+  },
+  {
+  id: "8",
+    nome: "Pulseira Mormaii",
+    subtitulo: "Pulseira inteligente com detalhes de design exclusivos.",
+    descricao:
+      "Uma pulseira inteligente com detalhes de design exclusivos, projetada para oferecer estilo e funcionalidade em um único acessório.",
+    avaliacao: 4.7,
+    quantidadeDeReviews: "1,275",
+    preco: 199.90,
+    imagem:
+      "https://mormaii.com/cdn/shop/files/Mormaii_Wearable_Tech_Pulseira.jpg?v=1788185271&width=713".replace("\t", ""),
     tamanhos: ["S", "M", "L"],
   },
 ];
