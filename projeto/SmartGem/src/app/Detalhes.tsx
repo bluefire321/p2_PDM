@@ -1,17 +1,8 @@
 
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  Image,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-
+import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, View, } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";//essa biblioteca só está aqui para exibir os ícones de coração e estrela.
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { produtos, type Produto } from "../Data/DataDetalhes";
 
@@ -20,10 +11,10 @@ type Props = {
   onBack?: () => void;
 };
 
-const ORANGE = "#E97B16";
+const AZULADO = "#1b2946";
 
-// Essa componente é responsável por exibir os detalhes de um produto específico. Ela utiliza o parâmetro "id" passado na navegação para buscar o produto correspondente na lista de produtos. Se o produto for encontrado, ele é exibido com suas informações detalhadas, incluindo imagem, nome, subtítulo, descrição, avaliação, tamanhos disponíveis e preço. O usuário pode selecionar um tamanho e adicionar o produto aos favoritos ou realizar a compra. Caso o produto não seja encontrado, uma mensagem de erro é exibida com a opção de voltar à tela anterior.
-export default function ProductDetailsScreen() {
+// Esse componente é responsável por exibir os detalhes de um produto específico. Ela utiliza o parâmetro "id" passado na navegação para buscar o produto correspondente na lista de produtos. Se o produto for encontrado, ele é exibido com suas informações detalhadas, incluindo imagem, nome, subtítulo, descrição, avaliação, tamanhos disponíveis e preço. O usuário pode selecionar um tamanho e adicionar o produto aos favoritos ou realizar a compra. Caso o produto não seja encontrado, uma mensagem de erro é exibida com a opção de voltar à tela anterior. Isso deu um trabalho danado.
+export default function TelaDetalhes() {
   const { id } = useLocalSearchParams<{ id?: string }>();
   const router = useRouter();
 
@@ -35,8 +26,8 @@ export default function ProductDetailsScreen() {
   // Verifica se o produto realmente existe.
   if (!product) {
     return (
-      <SafeAreaView style={styles.safeArea}>
-        <View style={styles.screen}>
+      <SafeAreaView style={styles.areaSegura} edges={["top", "left", "right"]}>
+        <View style={styles.tela}>
           <Text>Produto não encontrado.</Text>
 
           <Pressable onPress={() => router.back()}>
@@ -48,7 +39,7 @@ export default function ProductDetailsScreen() {
   }
 
   return (
-    <ProductDetailsContent
+    <ConteudoDetalhes
       product={product}
       onBack={() => router.back()}
     />
@@ -56,7 +47,7 @@ export default function ProductDetailsScreen() {
 }
 
 // Componente responsável pela interface dos detalhes.
-function ProductDetailsContent({ product, onBack }: Props) {
+function ConteudoDetalhes({ product, onBack }: Props) {
   const [selectedSize, setSelectedSize] = useState("M");
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -74,23 +65,23 @@ function ProductDetailsContent({ product, onBack }: Props) {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={["top", "left", "right"]}>
-      <View style={styles.screen}>
+    <SafeAreaView style={styles.areaSegura} edges={["top", "left", "right"]}>
+      <View style={styles.tela}>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={styles.conteudoScroll}
         >
           <View style={styles.hero}>
             <Image
               source={{ uri: product.imagem }}
-              style={styles.productImage}
+              style={styles.imagemProduto}
               resizeMode="cover"
             />
 
-            <View style={styles.imageTopBar}>
+            <View style={styles.imagemtopo}>
               <Pressable
                 onPress={onBack}
-                style={styles.roundButton}
+                style={styles.botaoRedondo}
                 accessibilityRole="button"
                 accessibilityLabel="Voltar"
               >
@@ -99,7 +90,7 @@ function ProductDetailsContent({ product, onBack }: Props) {
 
               <Pressable
                 onPress={() => setIsFavorite((current) => !current)}
-                style={styles.roundButton}
+                style={styles.botaoRedondo}
                 accessibilityRole="button"
                 accessibilityLabel={
                   isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"
@@ -108,47 +99,47 @@ function ProductDetailsContent({ product, onBack }: Props) {
                 <Ionicons
                   name={isFavorite ? "heart" : "heart-outline"}
                   size={23}
-                  color={isFavorite ? ORANGE : "#292929"}
+                  color={isFavorite ? "#45689f" : "#292929"}
                 />
               </Pressable>
             </View>
           </View>
 
-          <View style={styles.content}>
-            <View style={styles.titleRow}>
-              <View style={styles.titleContainer}>
-                <Text style={styles.productName}>{product.nome}</Text>
-                <Text style={styles.subtitle}>{product.subtitulo}</Text>
+          <View style={styles.conteudo}>
+            <View style={styles.tituloLinha}>
+              <View style={styles.tituloContainer}>
+                <Text style={styles.nomeProduto}>{product.nome}</Text>
+                <Text style={styles.sub}>{product.subtitulo}</Text>
               </View>
 
               <View style={styles.rating}>
-                <Ionicons name="star" size={19} color={ORANGE} />
-                <Text style={styles.ratingValue}>{product.avaliacao.toFixed(1)}</Text>
-                <Text style={styles.reviewCount}>({product.quantidadeDeReviews})</Text>
+                <Ionicons name="star" size={19} color={'#ff5900'} />
+                <Text style={styles.ratingValor}>{product.avaliacao.toFixed(1)}</Text>
+                <Text style={styles.reviewContagem}>({product.quantidadeDeReviews})</Text>
               </View>
             </View>
 
-            <View style={styles.separator} />
+            <View style={styles.separador} />
 
-            <Text style={styles.sectionTitle}>Description</Text>
-            <Text style={styles.description}>{product.descricao}</Text>
+            <Text style={styles.tituloseccao}>Descrição</Text>
+            <Text style={styles.descricao}>{product.descricao}</Text>
 
-            <Text style={[styles.sectionTitle, styles.sizeHeading]}>Size</Text>
-            <View style={styles.sizeRow}>
+            <Text style={[styles.tituloseccao, styles.tamanhoHeading]}>Tamanho</Text>
+            <View style={styles.tamanhofileira}>
               {product.tamanhos.map((size) => {
                 const selected = selectedSize === size;
                 return (
                   <Pressable
                     key={size}
                     onPress={() => setSelectedSize(size)}
-                    style={[styles.sizeButton, selected && styles.sizeButtonSelected]}
+                    style={[styles.tamanhoBotao, selected && styles.tamanhoBotaoSelecionado]}
                     accessibilityRole="button"
                     accessibilityState={{ selected }}
                   >
                     <Text
                       style={[
-                        styles.sizeText,
-                        selected && styles.sizeTextSelected,
+                        styles.tamanhoTexto,
+                        selected && styles.tamanhoTextoSelecionado,
                       ]}
                     >
                       {size}
@@ -160,21 +151,20 @@ function ProductDetailsContent({ product, onBack }: Props) {
           </View>
         </ScrollView>
 
-        <View style={styles.bottomBar}>
+        <View style={styles.barraBaixa}>
           <View>
-            <Text style={styles.priceLabel}>Price</Text>
-            <Text style={styles.price}>{formatPrice(product.preco)}</Text>
+            <Text style={styles.rotuloPreco}>Preço</Text>
+            <Text style={styles.preco}>{formatPrice(product.preco)}</Text>
           </View>
 
           <Pressable
             onPress={handleBuy}
             style={({ pressed }) => [
-              styles.buyButton,
-              pressed && styles.buyButtonPressed,
+              styles.botaoCompra,
+              pressed && styles.botaoCompraPressionado,
             ]}
-            accessibilityRole="button"
           >
-            <Text style={styles.buyButtonText}>Buy Now</Text>
+            <Text style={styles.botaoCompraTexto}>Adicionar ao Carrinho.</Text>
           </Pressable>
         </View>
       </View>
@@ -187,28 +177,28 @@ function formatPrice(value: number) {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  areaSegura: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#121B2D",
   },
-  screen: {
+  tela: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#121B2D",
   },
-  scrollContent: {
+  conteudoScroll: {
     paddingBottom: 18,
   },
   hero: {
     height: 330,
-    backgroundColor: "#F4F4F4",
+    backgroundColor: "#121B2D",
     position: "relative",
     overflow: "hidden",
   },
-  productImage: {
+  imagemProduto: {
     width: "100%",
     height: "100%",
   },
-  imageTopBar: {
+  imagemtopo: {
     position: "absolute",
     top: 12,
     left: 16,
@@ -216,34 +206,35 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  roundButton: {
+  botaoRedondo: {
     width: 42,
     height: 42,
     borderRadius: 21,
-    backgroundColor: "rgba(255,255,255,0.92)",
+    backgroundColor: "rgba(88, 115, 188, 0.92)",
     alignItems: "center",
     justifyContent: "center",
   },
-  content: {
+  conteudo: {
     paddingHorizontal: 19,
     paddingTop: 19,
   },
-  titleRow: {
+  tituloLinha: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     gap: 10,
+    color: "#fff",
   },
-  titleContainer: {
+  tituloContainer: {
     flex: 1,
   },
-  productName: {
-    color: "#202020",
+  nomeProduto: {
+    color: "#fff",
     fontSize: 19,
     fontWeight: "700",
   },
-  subtitle: {
-    color: "#555555",
+  sub: {
+    color: "#fff",
     fontSize: 13,
     marginTop: 5,
   },
@@ -252,42 +243,42 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 4,
   },
-  ratingValue: {
+  ratingValor: {
     color: "#333333",
     fontSize: 15,
     fontWeight: "600",
   },
-  reviewCount: {
+  reviewContagem: {
     color: "#999999",
     fontSize: 12,
   },
-  separator: {
+  separador: {
     height: 1,
-    backgroundColor: "#EAEAEA",
+    backgroundColor: "#26638f",
     marginTop: 20,
     marginBottom: 17,
   },
-  sectionTitle: {
-    color: "#252525",
+  tituloseccao: {
+    color: "#fff",
     fontSize: 15,
     fontWeight: "700",
   },
-  description: {
-    color: "#666666",
+  descricao: {
+    color: "#fff",
     fontSize: 13,
     lineHeight: 21,
     marginTop: 15,
   },
-  sizeHeading: {
+  tamanhoHeading: {
     marginTop: 22,
     marginBottom: 15,
   },
-  sizeRow: {
+  tamanhofileira: {
     flexDirection: "row",
     justifyContent: "space-between",
     gap: 12,
   },
-  sizeButton: {
+  tamanhoBotao: {
     flex: 1,
     height: 43,
     borderRadius: 11,
@@ -297,19 +288,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#FFFFFF",
   },
-  sizeButtonSelected: {
-    borderColor: ORANGE,
+  tamanhoBotaoSelecionado: {
+    borderColor: AZULADO,
     backgroundColor: "#FFF7F0",
   },
-  sizeText: {
+  tamanhoTexto: {
     color: "#555555",
     fontSize: 13,
   },
-  sizeTextSelected: {
-    color: ORANGE,
+  tamanhoTextoSelecionado: {
+    color: AZULADO,
     fontWeight: "600",
   },
-  bottomBar: {
+  barraBaixa: {
     borderTopWidth: 1,
     borderTopColor: "#EEEEEE",
     paddingHorizontal: 19,
@@ -318,30 +309,30 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#212d6b",
   },
-  priceLabel: {
-    color: "#A0A0A0",
+  rotuloPreco: {
+    color: "#fff",
     fontSize: 12,
     marginBottom: 4,
   },
-  price: {
-    color: ORANGE,
+  preco: {
+    color: '#fff',
     fontSize: 16,
     fontWeight: "700",
   },
-  buyButton: {
+  botaoCompra: {
     width: "59%",
     height: 45,
     borderRadius: 24,
-    backgroundColor: ORANGE,
+    backgroundColor: AZULADO,
     alignItems: "center",
     justifyContent: "center",
   },
-  buyButtonPressed: {
+  botaoCompraPressionado: {
     opacity: 0.82,
   },
-  buyButtonText: {
+  botaoCompraTexto: {
     color: "#FFFFFF",
     fontSize: 14,
     fontWeight: "700",
