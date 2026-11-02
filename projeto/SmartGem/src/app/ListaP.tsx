@@ -1,7 +1,6 @@
 //Lembrem de adicionar as iniciais de cada integrante (IQV) em todas as variáveis, funções e estados 
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { useRouter } from 'expo-router';
-import Detalhes from './Detalhes';
 import { produtos } from '../Data/DataDetalhes';
 
 export default function ListaP() {
