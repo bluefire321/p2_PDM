@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, ImageBackground } from "react-native";
 
 const EMAIL_VALIDOIQV = 'teste@smartgem.com';
 const SENHA_VALIDAIQV = 'Smart123';
@@ -69,11 +69,15 @@ export default function LoginIQV() {
   }
 
   return (
-    <View style={stylesIQV.container}>
+    <ImageBackground
+      source={require('../../assets/download.jpg')}
+      resizeMode="cover"
+      style={[stylesIQV.container]}
+    >
       <Text style={stylesIQV.logo}>SmartGem</Text>
 
       <Text style={stylesIQV.subtitulo}>
-        JOIAS E ACESSÓRIOS INTELIGENTES PARA O SEU DIA A DIA
+        JOIAS INTELIGENTES E ACESSÓRIOS TECNOLÓGICOS PARA O SEU DIA A DIA
       </Text>
 
       <Text style={stylesIQV.titulo}>Bem-vindo!</Text>
@@ -161,13 +165,15 @@ export default function LoginIQV() {
           </Text>
         </Text>
       </Pressable>
-    </View>
+    </ImageBackground>
   );
 }
 
 const stylesIQV = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    height: '100%',
     backgroundColor: CORESIQV.fundo,
     justifyContent: 'center',
     paddingHorizontal: 28,
