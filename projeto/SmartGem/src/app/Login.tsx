@@ -2,8 +2,12 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet, ImageBackground } from "react-native";
 
+// DEFINIÇÃO DAS CREDENCIAIS DE LOGIN
+
 const EMAIL_VALIDOIQV = 'teste@smartgem.com';
 const SENHA_VALIDAIQV = 'Smart123';
+
+// ESTILIZAÇÃO - PALETA DE CORES
 
 const CORESIQV = {
   fundo: '#192338',
@@ -12,6 +16,8 @@ const CORESIQV = {
   destaque: '#8FB3E2',
   texto: '#D9E1F1',
 };
+
+// DEFINIÇÃO DAS VARIÁVEIS USADAS PARA FAZER O LOGIN
 
 export default function LoginIQV() {
   const [emailIQV, setEmailIQV] = useState('');
@@ -67,6 +73,8 @@ export default function LoginIQV() {
       }
     }
   }
+
+  // BACK-END
 
   return (
     <ImageBackground
@@ -168,6 +176,8 @@ export default function LoginIQV() {
     </ImageBackground>
   );
 }
+
+// ESTILIZAÇÃO
 
 const stylesIQV = StyleSheet.create({
   container: {
