@@ -4,7 +4,7 @@ import { produtosQIV } from '../../Data/produtos';
 import { estilosQIV } from '../../Data/ListaP.styles';
 import { router} from 'expo-router';
 
-const categoriasQIV = [ 'Todos', 'An├®is', 'Rel├│gios', 'Colares', 'Pulseiras', ];
+const categoriasQIV = [ 'Todos', 'Anéis', 'Relógios', 'Colares', 'Pulseiras', ];
 
 export default function ListaProdutosQIV() {
   const [categoriaSelecionadaQIV, setCategoriaSelecionadaQIV] =
@@ -49,7 +49,7 @@ export default function ListaProdutosQIV() {
 
         <TextInput
           style={estilosQIV.pesquisa}
-          placeholder="Buscar joias e acess├│rios..."
+          placeholder="Buscar joias e acessórios..."
           placeholderTextColor="#8A96AA"
           value={buscaQIV}
           onChangeText={setBuscaQIV}
@@ -138,4 +138,3 @@ export default function ListaProdutosQIV() {
     </ScrollView>
   );
 }
-
