@@ -1,7 +1,8 @@
 ﻿import { useState } from 'react';
 import { View, Text, TextInput, ScrollView, Image, Pressable, } from 'react-native';
-import { produtosQIV } from '../produtos';
-import { estilosQIV } from '../ListaP.styles';
+import { produtosQIV } from '../../Data/produtos';
+import { estilosQIV } from '../../Data/ListaP.styles';
+import { router} from 'expo-router';
 
 const categoriasQIV = [ 'Todos', 'An├®is', 'Rel├│gios', 'Colares', 'Pulseiras', ];
 
@@ -117,12 +118,13 @@ export default function ListaProdutosQIV() {
 
             <Pressable
               style={estilosQIV.botaoDetalhes}
-              onPress={() =>
-                console.log(
-                  'Produto selecionado:',
-                  produtoQIV.nome,
-                )
+              onPress={() => router.push({
+                pathname: '/Detalhes',
+                params: {
+                id: String(produtoQIV.id)//Nesse momento, passo o ID de qualquer um dos 8 produtos. Agora isso faz total sentido, pois tudo corresponde numericamente.
               }
+              })
+            }
             >
               <Text style={estilosQIV.textoBotao}>Ver detalhes</Text>
             </Pressable>

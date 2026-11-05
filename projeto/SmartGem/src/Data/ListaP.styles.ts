@@ -93,7 +93,7 @@ export const estilosQIV = StyleSheet.create({
   },
 
   textoCategoriaAtiva: {
-    color: '#121B2D',
+    color: '  ',
     fontWeight: 'bold',
   },
 
