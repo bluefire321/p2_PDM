@@ -3,7 +3,7 @@ import { View, Text, TextInput, ScrollView, Image, Pressable, } from 'react-nati
 import { produtosQIV } from '../produtos';
 import { estilosQIV } from '../ListaP.styles';
 
-const categoriasQIV = [ 'Todos', 'An├®is', 'Rel├│gios', 'Colares', 'Pulseiras', ];
+const categoriasQIV = [ 'Todos', 'Anéis', 'Relógios', 'Colares', 'Pulseiras', ];
 
 export default function ListaProdutosQIV() {
   const [categoriaSelecionadaQIV, setCategoriaSelecionadaQIV] =
@@ -48,7 +48,7 @@ export default function ListaProdutosQIV() {
 
         <TextInput
           style={estilosQIV.pesquisa}
-          placeholder="Buscar joias e acess├│rios..."
+          placeholder="Buscar joias e acessórios..."
           placeholderTextColor="#8A96AA"
           value={buscaQIV}
           onChangeText={setBuscaQIV}
@@ -136,4 +136,3 @@ export default function ListaProdutosQIV() {
     </ScrollView>
   );
 }
-
