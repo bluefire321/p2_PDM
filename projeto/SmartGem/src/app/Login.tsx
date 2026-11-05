@@ -54,7 +54,7 @@ export default function LoginIQV() {
 
         setTimeout(() => {
           router.replace('/ListaP');
-        }, 1000); // 1 segundo
+        }, 500);
       }
       if (
         emailIQV.trim().toLowerCase() !== EMAIL_VALIDOIQV &&
