@@ -1,5 +1,6 @@
 
-import { View, Text, StyleSheet } from 'react-native';
+import { replace } from 'expo-router/build/global-state/routing';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 export default function SobreIQV() {
   return (
@@ -20,11 +21,17 @@ export default function SobreIQV() {
       </Text>
 
       <Text style={estilosSobreIQV.informacoes}>
-        Projeto acadêmico{"\n"}
-        Desenvolvimento Mobile{"\n"}
-        Expo SDK 54{"\n"}
-        React Native
+        Projeto para a Matéria de Desenvolvimento Mobile{"\n"}
+        Versão: Expo SDK 54{"\n"}
+        React Native{"\n"}
       </Text>
+
+      <TouchableOpacity
+        style={estilosSobreIQV.botao}
+        onPress={() => {replace('/Login');}}
+      >
+        <Text style={estilosSobreIQV.textoBotao}>Fazer Logout</Text>
+      </TouchableOpacity>
 
       <Text style={estilosSobreIQV.rodape}>
         SmartGem © 2026
@@ -37,7 +44,7 @@ export default function SobreIQV() {
 const estilosSobreIQV = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#121B2D',
     justifyContent: 'center',
     padding: 25,
   },
@@ -45,13 +52,13 @@ const estilosSobreIQV = StyleSheet.create({
   titulo: {
     fontSize: 26,
     fontWeight: 'bold',
-    color: '#3d16e9',
+    color: '#7f92ba',
     marginBottom: 20,
   },
 
   descricao: {
     fontSize: 15,
-    color: '#555555',
+    color: '#fff',
     lineHeight: 24,
   },
 
@@ -60,12 +67,12 @@ const estilosSobreIQV = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 30,
     marginBottom: 12,
-    color: '#252525',
+    color: '#7f92ba',
   },
 
   informacoes: {
     fontSize: 15,
-    color: '#666666',
+    color: '#fff',
     lineHeight: 27,
   },
 
@@ -74,5 +81,18 @@ const estilosSobreIQV = StyleSheet.create({
     color: '#999999',
     fontSize: 12,
     textAlign: 'center',
+  },
+
+  botao: {
+    backgroundColor: '#1659e9',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginTop: 380,
+  },
+  textoBotao: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
