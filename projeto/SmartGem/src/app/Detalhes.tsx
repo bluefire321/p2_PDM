@@ -1,31 +1,10 @@
 
-import {
-  useEffect as useEffectIQV,
-  useState as useStateIQV,
-} from "react";
-
-import {
-  Alert,
-  Image,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-
+import { useEffect as useEffectIQV, useState as useStateIQV, } from "react";
+import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, View, } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
-
-import {
-  useLocalSearchParams,
-  useRouter,
-} from "expo-router";
-
-import {
-  produtos as produtosIQV,
-  type Produto as ProdutoIQV,
-} from "../Data/DataDetalhes";
+import { useLocalSearchParams, useRouter, } from "expo-router";
+import { produtos as produtosIQV, type Produto as ProdutoIQV, } from "../Data/DataDetalhes";
 
 // Propriedades utilizadas pelo componente de apresentação.
 type PropriedadesIQV = {
