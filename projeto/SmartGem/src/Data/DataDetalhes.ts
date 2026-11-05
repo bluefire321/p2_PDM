@@ -110,9 +110,9 @@ export const produtos: Produto[] = [
       "Uma pulseira inteligente com detalhes de design exclusivos, projetada para oferecer estilo e funcionalidade em um único acessório.",
     avaliacao: 4.7,
     quantidadeDeReviews: "1,275",
-    preco: 199.90,
+    preco: 169.90,
     imagem:
-      "https://mormaii.com/cdn/shop/files/Mormaii_Wearable_Tech_Pulseira.jpg?v=1788185271&width=713".replace("\t", ""),
+      "https://www.mormaiishop.com.br/upload/produto/imagem/b_pulseira-inteligente-mormaii-preto-preto-355.webp".replace("\t", ""),
     tamanhos: ["S", "M", "L"],
   },
 ];

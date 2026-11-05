@@ -1,9 +1,8 @@
 ﻿import { useState } from 'react';
 import { View, Text, TextInput, ScrollView, Image, Pressable, } from 'react-native';
-import { produtosQIV } from '../Data/produtos';
-import { estilosQIV } from '../Data/ListaP.styles';
-import {useRouter, router} from 'expo-router';
-import { produtos } from '../Data/DataDetalhes';
+import { produtosQIV } from '../../Data/produtos';
+import { estilosQIV } from '../../Data/ListaP.styles';
+import { router} from 'expo-router';
 
 const categoriasQIV = [ 'Todos', 'An├®is', 'Rel├│gios', 'Colares', 'Pulseiras', ];
 

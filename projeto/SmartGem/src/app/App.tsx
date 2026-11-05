@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ListaP from './ListaP';
+import ListaP from './(tabs)/ListaP';
 import Login from './Login';
 
 export default function App() {
