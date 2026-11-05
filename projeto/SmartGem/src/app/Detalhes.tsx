@@ -1,36 +1,68 @@
 
-import React, { useEffect, useState } from "react";
-import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, View, } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";//essa biblioteca só está aqui para exibir os ícones de coração e estrela.
-import { useLocalSearchParams, useRouter } from "expo-router";
-import { produtos, type Produto } from "../Data/DataDetalhes";
+import {
+  useEffect as useEffectIQV,
+  useState as useStateIQV,
+} from "react";
 
-type Props = {
-  product: Produto;
-  onBack?: () => void;
+import {
+  Alert,
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+
+import {
+  useLocalSearchParams,
+  useRouter,
+} from "expo-router";
+
+import {
+  produtos as produtosIQV,
+  type Produto as ProdutoIQV,
+} from "../Data/DataDetalhes";
+
+// Propriedades utilizadas pelo componente de apresentação.
+type PropriedadesIQV = {
+  produtoIQV: ProdutoIQV;
+  aoVoltarIQV?: () => void;
 };
 
-const AZULADO = "#1b2946";
+// Cor principal da interface.
+const AZULADOIQV = "#1b2946";
 
-// Esse componente é responsável por exibir os detalhes de um produto específico. Ela utiliza o parâmetro "id" passado na navegação para buscar o produto correspondente na lista de produtos. Se o produto for encontrado, ele é exibido com suas informações detalhadas, incluindo imagem, nome, subtítulo, descrição, avaliação, tamanhos disponíveis e preço. O usuário pode selecionar um tamanho e adicionar o produto aos favoritos ou realizar a compra. Caso o produto não seja encontrado, uma mensagem de erro é exibida com a opção de voltar à tela anterior. Isso deu um trabalho danado.
-export default function TelaDetalhes() {
-  const { id } = useLocalSearchParams<{ id?: string }>();
-  const router = useRouter();
+// Componente responsável pela navegação e localização do produto.
+export default function TelaDetalhesIQV() {
+  const { id: idIQV } = useLocalSearchParams<{ id?: string }>();
+
+  const roteadorIQV = useRouter();
 
   // Procura o produto correspondente ao ID recebido.
-  const product = produtos.find(
-    (item) => String(item.id) === id
+  const produtoEncontradoIQV = produtosIQV.find(
+    (produtoIQV) => String(produtoIQV.id) === idIQV
   );
 
   // Verifica se o produto realmente existe.
-  if (!product) {
+  if (!produtoEncontradoIQV) {
     return (
-      <SafeAreaView style={styles.areaSegura} edges={["top", "left", "right"]}>
-        <View style={styles.tela}>
-          <Text>Produto não encontrado.</Text>
+      <SafeAreaView
+        style={estilosIQV.areaSegura}
+        edges={["top", "left", "right"]}
+      >
+        <View style={estilosIQV.tela}>
+          <Text style={estilosIQV.tituloseccao}>
+            Produto não encontrado.
+          </Text>
 
-          <Pressable onPress={() => router.back()}>
+          <Pressable
+            onPress={() => roteadorIQV.back()}
+            style={estilosIQV.botaoRedondo}
+          >
             <Text>Voltar</Text>
           </Pressable>
         </View>
@@ -39,166 +71,258 @@ export default function TelaDetalhes() {
   }
 
   return (
-    <ConteudoDetalhes
-      product={product}
-      onBack={() => router.back()}
+    <ConteudoDetalhesIQV
+      produtoIQV={produtoEncontradoIQV}
+      aoVoltarIQV={() => roteadorIQV.back()}
     />
   );
 }
 
-// Componente responsável pela interface dos detalhes.
-function ConteudoDetalhes({ product, onBack }: Props) {
-  const [selectedSize, setSelectedSize] = useState("M");
-  const [isFavorite, setIsFavorite] = useState(false);
+// Componente responsável pela apresentação dos detalhes.
+function ConteudoDetalhesIQV({
+  produtoIQV,
+  aoVoltarIQV,
+}: PropriedadesIQV) {
 
-  useEffect(() => {
-    setSelectedSize("M");
-    setIsFavorite(false);
-  }, [product.id]);
+  // Estados responsáveis pelo tamanho e pelos favoritos.
+  const [tamanhoSelecionadoIQV, setTamanhoSelecionadoIQV] =
+    useStateIQV("M");
 
-  const handleBuy = () => {
+  const [favoritoIQV, setFavoritoIQV] =
+    useStateIQV(false);
+
+  // Reinicia as opções quando o produto muda.
+  useEffectIQV(() => {
+    setTamanhoSelecionadoIQV("M");
+    setFavoritoIQV(false);
+  }, [produtoIQV.id]);
+
+  // Função responsável pela demonstração da compra.
+  const manipularCompraIQV = () => {
     Alert.alert(
       "Produto selecionado",
-      `${product.nome} • Tamanho ${selectedSize}\nPreço: ${formatPrice(product.preco)}`,
+      `${produtoIQV.nome} • Tamanho ${tamanhoSelecionadoIQV}\nPreço: ${formatarPrecoIQV(produtoIQV.preco)}`,
       [{ text: "OK" }]
     );
   };
 
   return (
-    <SafeAreaView style={styles.areaSegura} edges={["top", "left", "right"]}>
-      <View style={styles.tela}>
+    <SafeAreaView
+      style={estilosIQV.areaSegura}
+      edges={["top", "left", "right"]}
+    >
+      <View style={estilosIQV.tela}>
+
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.conteudoScroll}
+          contentContainerStyle={estilosIQV.conteudoScroll}
         >
-          <View style={styles.hero}>
+
+          <View style={estilosIQV.hero}>
+
             <Image
-              source={{ uri: product.imagem }}
-              style={styles.imagemProduto}
+              source={{ uri: produtoIQV.imagem }}
+              style={estilosIQV.imagemProduto}
               resizeMode="cover"
             />
 
-            <View style={styles.imagemtopo}>
+            <View style={estilosIQV.imagemTopo}>
+
               <Pressable
-                onPress={onBack}
-                style={styles.botaoRedondo}
+                onPress={aoVoltarIQV}
+                style={estilosIQV.botaoRedondo}
                 accessibilityRole="button"
                 accessibilityLabel="Voltar"
               >
-                <Ionicons name="chevron-back" size={23} color="#292929" />
+                <Ionicons
+                  name="chevron-back"
+                  size={23}
+                  color="#292929"
+                />
               </Pressable>
 
               <Pressable
-                onPress={() => setIsFavorite((current) => !current)}
-                style={styles.botaoRedondo}
+                onPress={() =>
+                  setFavoritoIQV(
+                    (favoritoAtualIQV) => !favoritoAtualIQV
+                  )
+                }
+                style={estilosIQV.botaoRedondo}
                 accessibilityRole="button"
                 accessibilityLabel={
-                  isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"
+                  favoritoIQV
+                    ? "Remover dos favoritos"
+                    : "Adicionar aos favoritos"
                 }
               >
                 <Ionicons
-                  name={isFavorite ? "heart" : "heart-outline"}
+                  name={favoritoIQV ? "heart" : "heart-outline"}
                   size={23}
-                  color={isFavorite ? "#45689f" : "#292929"}
+                  color={favoritoIQV ? "#45689f" : "#292929"}
                 />
               </Pressable>
+
             </View>
           </View>
 
-          <View style={styles.conteudo}>
-            <View style={styles.tituloLinha}>
-              <View style={styles.tituloContainer}>
-                <Text style={styles.nomeProduto}>{product.nome}</Text>
-                <Text style={styles.sub}>{product.subtitulo}</Text>
+          <View style={estilosIQV.conteudo}>
+
+            <View style={estilosIQV.tituloLinha}>
+
+              <View style={estilosIQV.tituloContainer}>
+                <Text style={estilosIQV.nomeProduto}>
+                  {produtoIQV.nome}
+                </Text>
+
+                <Text style={estilosIQV.sub}>
+                  {produtoIQV.subtitulo}
+                </Text>
               </View>
 
-              <View style={styles.rating}>
-                <Ionicons name="star" size={19} color={'#ff5900'} />
-                <Text style={styles.ratingValor}>{product.avaliacao.toFixed(1)}</Text>
-                <Text style={styles.reviewContagem}>({product.quantidadeDeReviews})</Text>
+              <View style={estilosIQV.rating}>
+                <Ionicons
+                  name="star"
+                  size={19}
+                  color="#ff5900"
+                />
+
+                <Text style={estilosIQV.ratingValor}>
+                  {produtoIQV.avaliacao.toFixed(1)}
+                </Text>
+
+                <Text style={estilosIQV.reviewContagem}>
+                  ({produtoIQV.quantidadeDeReviews})
+                </Text>
               </View>
+
             </View>
 
-            <View style={styles.separador} />
+            <View style={estilosIQV.separador} />
 
-            <Text style={styles.tituloseccao}>Descrição</Text>
-            <Text style={styles.descricao}>{product.descricao}</Text>
+            <Text style={estilosIQV.tituloseccao}>
+              Descrição
+            </Text>
 
-            <Text style={[styles.tituloseccao, styles.tamanhoHeading]}>Tamanho</Text>
-            <View style={styles.tamanhofileira}>
-              {product.tamanhos.map((size) => {
-                const selected = selectedSize === size;
+            <Text style={estilosIQV.descricao}>
+              {produtoIQV.descricao}
+            </Text>
+
+            <Text
+              style={[
+                estilosIQV.tituloseccao,
+                estilosIQV.tamanhoHeading,
+              ]}
+            >
+              Tamanho
+            </Text>
+
+            <View style={estilosIQV.tamanhoFileira}>
+
+              {produtoIQV.tamanhos.map((tamanhoIQV) => {
+
+                const tamanhoEstaSelecionadoIQV =
+                  tamanhoSelecionadoIQV === tamanhoIQV;
+
                 return (
                   <Pressable
-                    key={size}
-                    onPress={() => setSelectedSize(size)}
-                    style={[styles.tamanhoBotao, selected && styles.tamanhoBotaoSelecionado]}
+                    key={tamanhoIQV}
+                    onPress={() =>
+                      setTamanhoSelecionadoIQV(tamanhoIQV)
+                    }
+                    style={[
+                      estilosIQV.tamanhoBotao,
+                      tamanhoEstaSelecionadoIQV &&
+                        estilosIQV.tamanhoBotaoSelecionado,
+                    ]}
                     accessibilityRole="button"
-                    accessibilityState={{ selected }}
+                    accessibilityState={{
+                      selected: tamanhoEstaSelecionadoIQV,
+                    }}
                   >
                     <Text
                       style={[
-                        styles.tamanhoTexto,
-                        selected && styles.tamanhoTextoSelecionado,
+                        estilosIQV.tamanhoTexto,
+                        tamanhoEstaSelecionadoIQV &&
+                          estilosIQV.tamanhoTextoSelecionado,
                       ]}
                     >
-                      {size}
+                      {tamanhoIQV}
                     </Text>
                   </Pressable>
                 );
               })}
+
             </View>
           </View>
         </ScrollView>
 
-        <View style={styles.barraBaixa}>
+        <View style={estilosIQV.barraBaixa}>
+
           <View>
-            <Text style={styles.rotuloPreco}>Preço</Text>
-            <Text style={styles.preco}>{formatPrice(product.preco)}</Text>
+            <Text style={estilosIQV.rotuloPreco}>
+              Preço
+            </Text>
+
+            <Text style={estilosIQV.preco}>
+              {formatarPrecoIQV(produtoIQV.preco)}
+            </Text>
           </View>
 
           <Pressable
-            onPress={handleBuy}
-            style={({ pressed }) => [
-              styles.botaoCompra,
-              pressed && styles.botaoCompraPressionado,
+            onPress={manipularCompraIQV}
+            style={({ pressed: pressionadoIQV }) => [
+              estilosIQV.botaoCompra,
+              pressionadoIQV &&
+                estilosIQV.botaoCompraPressionado,
             ]}
+            accessibilityRole="button"
           >
-            <Text style={styles.botaoCompraTexto}>Adicionar ao Carrinho.</Text>
+            <Text style={estilosIQV.botaoCompraTexto}>
+              Adicionar ao Carrinho.
+            </Text>
           </Pressable>
+
         </View>
       </View>
     </SafeAreaView>
   );
 }
 
-function formatPrice(value: number) {
-  return `$ ${value.toFixed(2)}`;
+// Função responsável pela formatação dos preços.
+function formatarPrecoIQV(valorIQV: number) {
+  return `$ ${valorIQV.toFixed(2)}`;
 }
 
-const styles = StyleSheet.create({
+// Estilização da tela.
+const estilosIQV = StyleSheet.create({
+
   areaSegura: {
     flex: 1,
     backgroundColor: "#121B2D",
   },
+
   tela: {
     flex: 1,
     backgroundColor: "#121B2D",
   },
+
   conteudoScroll: {
     paddingBottom: 18,
   },
+
   hero: {
     height: 330,
     backgroundColor: "#121B2D",
     position: "relative",
     overflow: "hidden",
   },
+
   imagemProduto: {
     width: "100%",
     height: "100%",
   },
-  imagemtopo: {
+
+  imagemTopo: {
     position: "absolute",
     top: 12,
     left: 16,
@@ -206,6 +330,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+
   botaoRedondo: {
     width: 42,
     height: 42,
@@ -214,70 +339,83 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   conteudo: {
     paddingHorizontal: 19,
     paddingTop: 19,
   },
+
   tituloLinha: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     gap: 10,
-    color: "#fff",
   },
+
   tituloContainer: {
     flex: 1,
   },
+
   nomeProduto: {
     color: "#fff",
     fontSize: 19,
     fontWeight: "700",
   },
+
   sub: {
     color: "#fff",
     fontSize: 13,
     marginTop: 5,
   },
+
   rating: {
     flexDirection: "row",
     alignItems: "center",
     gap: 4,
   },
+
   ratingValor: {
     color: "#333333",
     fontSize: 15,
     fontWeight: "600",
   },
+
   reviewContagem: {
     color: "#999999",
     fontSize: 12,
   },
+
   separador: {
     height: 1,
     backgroundColor: "#26638f",
     marginTop: 20,
     marginBottom: 17,
   },
+
   tituloseccao: {
     color: "#fff",
     fontSize: 15,
     fontWeight: "700",
   },
+
   descricao: {
     color: "#fff",
     fontSize: 13,
     lineHeight: 21,
     marginTop: 15,
   },
+
   tamanhoHeading: {
     marginTop: 22,
     marginBottom: 15,
   },
-  tamanhofileira: {
+
+  tamanhoFileira: {
     flexDirection: "row",
     justifyContent: "space-between",
     gap: 12,
   },
+
   tamanhoBotao: {
     flex: 1,
     height: 43,
@@ -288,18 +426,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#FFFFFF",
   },
+
   tamanhoBotaoSelecionado: {
-    borderColor: AZULADO,
+    borderColor: AZULADOIQV,
     backgroundColor: "#FFF7F0",
   },
+
   tamanhoTexto: {
     color: "#555555",
     fontSize: 13,
   },
+
   tamanhoTextoSelecionado: {
-    color: AZULADO,
+    color: AZULADOIQV,
     fontWeight: "600",
   },
+
   barraBaixa: {
     borderTopWidth: 1,
     borderTopColor: "#EEEEEE",
@@ -311,30 +453,36 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: "#212d6b",
   },
+
   rotuloPreco: {
     color: "#fff",
     fontSize: 12,
     marginBottom: 4,
   },
+
   preco: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
     fontWeight: "700",
   },
+
   botaoCompra: {
     width: "59%",
     height: 45,
     borderRadius: 24,
-    backgroundColor: AZULADO,
+    backgroundColor: AZULADOIQV,
     alignItems: "center",
     justifyContent: "center",
   },
+
   botaoCompraPressionado: {
     opacity: 0.82,
   },
+
   botaoCompraTexto: {
     color: "#FFFFFF",
     fontSize: 14,
     fontWeight: "700",
   },
+
 });

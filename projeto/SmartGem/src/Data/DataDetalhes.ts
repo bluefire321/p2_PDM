@@ -8,7 +8,7 @@ export type Produto = {
   preco: number;
   imagem: string;
   tamanhos: string[];
-}; //o intuito desse type é criar um modelo para os produtos que serão exibidos na tela de detalhes.
+}; //o intuito desse type é criar um modelo para os produtos que serão exibidos na tela de detalhes. Como isso aqui é Banco de Dados, decidi não adotar a convenção "IQV" para as variáveis.
 
 export const produtos: Produto[] = [
   {

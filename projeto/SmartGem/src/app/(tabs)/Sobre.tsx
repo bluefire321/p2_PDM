@@ -28,7 +28,7 @@ export default function SobreIQV() {
 
       <TouchableOpacity
         style={estilosSobreIQV.botao}
-        onPress={() => {replace('/Login');}}
+        onPress={() => {replace('/Login');}}//apesar de usar Replace, o usuário ainda consegue voltar para a tela anterior, mas não é possível voltar para a tela de detalhes. Curioso.
       >
         <Text style={estilosSobreIQV.textoBotao}>Fazer Logout</Text>
       </TouchableOpacity>
