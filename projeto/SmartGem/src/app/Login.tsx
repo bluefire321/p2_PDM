@@ -26,6 +26,8 @@ export default function LoginIQV() {
   const [mensagemIQV, setMensagemIQV] = useState('');
   const [sucessoIQV, setSucessoIQV] = useState(false);
 
+
+
   function entrarIQV() {
     if (
       emailIQV.trim().toLowerCase() === '' && senhaIQV === ''
@@ -37,7 +39,7 @@ export default function LoginIQV() {
         setMensagemIQV('Por favor, insira um e-mail.');
         setSucessoIQV(false);
       }
-      if (senhaIQV === '') {
+      else if (senhaIQV === '') {
         setMensagemIQV('Por favor, insira uma senha.');
         setSucessoIQV(false);
       }
@@ -50,7 +52,9 @@ export default function LoginIQV() {
         setMensagemIQV('Login realizado com sucesso!');
         setSucessoIQV(true);
 
-        router.replace('/ListaP');
+        setTimeout(() => {
+          router.replace('/ListaP');
+        }, 1000); // 1 segundo
       }
       if (
         emailIQV.trim().toLowerCase() !== EMAIL_VALIDOIQV &&
@@ -94,8 +98,7 @@ export default function LoginIQV() {
         Entre na sua conta para continuar.
       </Text>
 
-      <Text style={stylesIQV.label}>E-mail</Text>
-
+      <Text style={stylesIQV.label}>E-mail</Text>    
       <TextInput
         style={stylesIQV.input}
         placeholder="Digite seu e-mail"
